@@ -16,3 +16,4 @@ export const CharacterComponent = ({item, children}: CharacterComponentProps) =>
         </div>
     )
 }
+//asd
