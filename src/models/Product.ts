@@ -1,5 +1,8 @@
-export interface IProduct{
-    title: string;
-    price: number;
-    image: string;
+export interface ISimpson {
+    name: string;
+    surname: string;
+    age: number;
+    info: string;
+    photo: string;
+
 }
