@@ -1,4 +1,4 @@
-export interface ISimpson {
+export interface ICharacter {
     name: string;
     surname: string;
     age: number;

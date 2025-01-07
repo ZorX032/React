@@ -1,6 +1,6 @@
-import {ISimpson} from "../models/Product.ts";
+import {ICharacter} from "../models/Character.ts";
 
-export const simpsons = [
+export const simpsons:ICharacter[] = [
     {
         name: 'Bart',
         surname: 'Simpson',
