@@ -1,5 +1,5 @@
 import './App.css'
-import UsersComponent from "./components/users-component/UsersComponent.tsx";
+import TodosComponent from "./components/todos-component/TodosComponent.tsx";
 
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
 
     return (
         <div>
-            <UsersComponent/>
+            <TodosComponent/>
         </div>
     );
 };
