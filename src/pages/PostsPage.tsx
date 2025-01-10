@@ -1,9 +1,11 @@
 
+import PostsComponent from "../components/posts-component/PostsComponent.tsx";
+
 
 const PostsPage = () => {
     return (
         <div>
-            BPage
+            <PostsComponent/>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {userService} from "../../services/api.service.ts";
 import {IUser} from "../../models/IUser.ts";
-import UserComponent from "../user/UserComponent.tsx";
+import UserComponent from "../user-component/UserComponent.tsx";
 
 
 const UsersComponent = () => {
@@ -10,7 +10,7 @@ const UsersComponent = () => {
 
     useEffect(() => {
         userService.getUsers().then((allUsers)=> {
-            setUsers(allUsers);
+            setUsers(allUsers.users);
 
         })
     }, []);

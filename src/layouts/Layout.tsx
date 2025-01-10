@@ -1,4 +1,4 @@
-import Menu from "../components/menu/Menu.tsx";
+import Menu from "../components/menu-component/Menu.tsx";
 import {Outlet} from "react-router-dom";
 
 
