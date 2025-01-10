@@ -6,10 +6,10 @@ export const urls ={
             return baseUrl + '/' + id;
         }
     },
-    posts:{
-        allPosts:baseUrl +'/posts',
+    carts:{
+        allCarts:baseUrl +'/carts',
         byId:(id: number) =>{
-            return baseUrl + '/' + id;
+            return baseUrl + '/user' + '/' + id;
         }
     },
 }

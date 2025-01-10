@@ -17,11 +17,13 @@ export const userService = {
     }
 };
 
-export const postService = {
-    getPosts: async () => {
-        const response = await fetch(urls.posts.allPosts);
+export const cartService = {
+    getCarts: async () => {
+        const response = await fetch(urls.carts.allCarts);
         const data = await response.json();
-        return data; // Возвращаем объект, содержащий ключ users
-    }
+        return data; // Возвращаем объект, содержащий ключ carts
+    },
 };
+
+
 
