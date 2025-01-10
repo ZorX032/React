@@ -1,3 +1,4 @@
+import './Menu.css'
 import {Link} from "react-router-dom";
 
 
@@ -6,8 +7,8 @@ const Menu = () => {
         <div>
            <ul>
                <li><Link to={'/'}>home</Link></li>
-               <li><Link to={'/a'}>a page</Link></li>
-               <li><Link to={'/b'}>b page</Link></li>
+               <li><Link to={'users'}>users</Link></li>
+               <li><Link to={'posts'}>posts</Link></li>
            </ul>
         </div>
     );

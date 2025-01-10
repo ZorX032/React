@@ -1,6 +1,6 @@
 
 
-const BPage = () => {
+const PostsPage = () => {
     return (
         <div>
             BPage
@@ -8,4 +8,4 @@ const BPage = () => {
     );
 };
 
-export default BPage;
+export default PostsPage;
