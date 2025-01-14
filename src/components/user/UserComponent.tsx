@@ -8,8 +8,8 @@ type PropsType ={
 const UserComponent: FC<PropsType> = ({item}) => {
     return (
         <div>
-            <div>{item.first_name} {item.last_name}</div>
-            <img src={item.avatar} alt={item.last_name}/>
+            <div>{item.id} {item.firstName}</div>
+            {/*<img src={item.} alt={item.last_name}/>*/}
             
         </div>
     );
