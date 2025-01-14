@@ -3,30 +3,22 @@ import {useSearchParams} from "react-router-dom";
 
 const PaginationComponent = () => {
 
-    const [query, setQuery] = useSearchParams({pg: '1'});
+    const [searchParams, setSearchParams] = useSearchParams({pg: '1'});
+    let currentPage = Number(searchParams.get('page') || '1');
     return (
-        <div>
+        <div className="flex gap-4">
             <button onClick={() => {
-                const pg = query.get('pg');
-                if (pg) {
-                    let currentPage = +pg;
-                    setQuery({pg: (--currentPage).toString()});
+                if (currentPage > 1) {
+                    setSearchParams({pg: (--currentPage).toString()});
                 }
 
 
-            }}>prev
+            }} className="bg-black text-white rounded px-10 py-3 hover:bg-gray-800">Prev
             </button>
-
-
             <button onClick={() => {
-                const pg = query.get('pg');
-                if (pg) {
-                    let currentPage = +pg;
-                    setQuery({pg: (++currentPage).toString()});
-                }
+                setSearchParams({page: (++currentPage).toString()});
 
-
-            }}>next
+            }} className="bg-black text-white rounded px-10 py-3 hover:bg-gray-800">Next
             </button>
 
         </div>
