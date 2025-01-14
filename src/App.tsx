@@ -1,18 +1,17 @@
 import './App.css'
-import {products} from "./data/productsList.ts";
-import MyProduct from "./components/my-product/MyProduct.tsx";
-// import MyComponent from "./components/my-component/MyComponent.tsx";
+import PaginationComponent from "./components/pagination/PaginationComponent.tsx";
+import UsersComponent from "./components/users/UsersComponent.tsx";
 
-function App() {
+
+const App = () => {
 
 
     return (
-        <>
-            {
-                products.map((product, index) => <MyProduct key={index} product={product}/>
-                )
-            }
-        </>
+        <div>
+            <UsersComponent/>
+            hi
+            <PaginationComponent/>
+        </div>
     );
 }
 
