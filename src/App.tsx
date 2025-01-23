@@ -1,18 +1,18 @@
 import LeftBranch from "./components/LeftBranch.tsx";
 import RightBranch from "./components/RightBranch.tsx";
-import {init, MyContext} from "./context/MyContext.tsx";
+import {MyContext} from "./context/MyContext.tsx";
 import {useState} from "react";
 
 
 function App() {
-    const [counter, setCounter] = useState<number>(init.counterValue);
+    const [themeColor, setThemeColor] = useState<string>('light');
 
     return (
         <>
             <MyContext.Provider value={{
-                counterValue: counter,
-                increment:(obj)=>{
-                    setCounter(++obj);
+                theme: themeColor,
+                changeTheme:(themeValue)=>{
+                    setThemeColor(themeValue)
                 }
             }}>
                 <LeftBranch/>

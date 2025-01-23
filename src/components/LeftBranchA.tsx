@@ -1,16 +1,15 @@
 import {useContext} from "react";
 import {MyContext} from "../context/MyContext.tsx";
+import "./LeftBranchA.css"
+
 
 
 const LeftBranchA = () => {
-    const {counterValue}= useContext(MyContext)
+    const {theme}= useContext(MyContext)
     return (
-        <div>
+        <div className={theme}>
             Left Branch A
-            <p>
-                current counter value is {counterValue}
 
-            </p>
         </div>
     );
 };

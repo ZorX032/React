@@ -3,14 +3,19 @@ import {MyContext} from "../context/MyContext.tsx";
 
 
 const RightBranchA = () => {
-    const {counterValue,increment}= useContext(MyContext)
+    const {changeTheme}= useContext(MyContext)
+    const handlerDark = () =>{
+        changeTheme('dark')
+    }
+    const handlerLight = () =>{
+        changeTheme('light')
+    }
     return (
         <div>RigtBranchA
 
 
-            <button onClick={()=>{
-                increment(counterValue);
-            }}>CLick me to increment counter in LBA </button>
+            <button onClick={handlerDark}>Change to dark</button>
+            <button onClick={handlerLight}>Change to light</button>
         </div>
     );
 };

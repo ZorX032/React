@@ -1,17 +1,17 @@
 import {createContext} from "react";
 
 type MyContextType={
-    counterValue: number;
-    increment:(obj:number)=> void
+    theme: string;
+    changeTheme:(theme:string)=> void
 
 
 }
 
-export const init = {
-    counterValue: 0,
-        increment:(obj:number)=>{
-        console.log(obj)
+const defaultValue: MyContextType = {
+    theme: 'light',
+        changeTheme:(theme:string)=>{
+        console.log(theme)
     }
 
 };
-export const MyContext = createContext<MyContextType>(init);
+export const MyContext = createContext<MyContextType>(defaultValue);
