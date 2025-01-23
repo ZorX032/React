@@ -1,23 +1,21 @@
-import LeftBranch from "./components/LeftBranch.tsx";
-import RightBranch from "./components/RightBranch.tsx";
-import {init, MyContext} from "./context/MyContext.tsx";
-import {useState} from "react";
+
+import {IUser} from "./models/IUser.ts";
+import {useFetch} from "./hooks/useFetch.tsx";
 
 
 function App() {
-    const [counter, setCounter] = useState<number>(init.counterValue);
+    const users = useFetch<IUser[]>('https://jsonplaceholder.typicode.com/users', []);
 
     return (
         <>
-            <MyContext.Provider value={{
-                counterValue: counter,
-                increment:(obj)=>{
-                    setCounter(++obj);
-                }
-            }}>
-                <LeftBranch/>
-                <RightBranch/>
-            </MyContext.Provider>
+            {
+                users.map((user)=>(
+                    <div key={user.id}>
+                        {user.id}: {user.name}
+                    </div>
+                ))
+            }
+
         </>
     );
 }
