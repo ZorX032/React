@@ -8,17 +8,20 @@ function App() {
     const [themeColor, setThemeColor] = useState<string>('light');
 
     return (
-        <>
+        <div
+            className={`min-h-screen ${themeColor === 'dark' ? 'bg-gray-800 text-white' : 'bg-teal-100 text-gray-800'}`}>
             <MyContext.Provider value={{
                 theme: themeColor,
-                changeTheme:(themeValue)=>{
-                    setThemeColor(themeValue)
+                changeTheme: (themeValue) => {
+                    setThemeColor(themeValue);
                 }
             }}>
-                <LeftBranch/>
-                <RightBranch/>
+                <div className="flex flex-col md:flex-row justify-between items-center p-6 gap-6">
+                    <LeftBranch/>
+                    <RightBranch/>
+                </div>
             </MyContext.Provider>
-        </>
+        </div>
     );
 }
 
