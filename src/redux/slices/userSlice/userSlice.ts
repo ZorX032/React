@@ -26,6 +26,7 @@ const loadUser = createAsyncThunk('userSlice/loadUser',
         try {
             const users = await fetch('https://jsonplaceholder.typicode.com/users/' + id)
                 .then(value => value.json());
+            console.log(users)
             // thunkAPI.dispatch(userSliceActions.changeLoadState(true));
             return thunkAPI.fulfillWithValue(users);
         }catch (e){
