@@ -1,14 +1,15 @@
 import {useAppDispatch} from "../redux/hooks/useAppDispatch.tsx";
-import {useAppSelector} from "../redux/hooks/useAppSelector.ts";
+import {useAppSelector} from "../redux/hooks/useAppSelector.tsx";
 import {useEffect} from "react";
 import {userSliceActions} from "../redux/slices/userSlice/userSlice.ts";
 import {commentSliceActions} from "../redux/slices/commentsSlice/commentsSlice.ts";
 import {postSliceActions} from "../redux/slices/postSlice/postSlice.ts";
 
 
+
 export const ComplexPage = () => {
 
-    const dispath = useAppDispatch();
+    const dispatch = useAppDispatch();
     const {
         commentSlice: {comments},
         userSlice: {users},
@@ -17,13 +18,13 @@ export const ComplexPage = () => {
 
     useEffect(()=>{
         if(!users.length){
-            dispath(userSliceActions.loadUsers());
+            dispatch(userSliceActions.loadUsers());
         }
         if(!posts.length){
-            dispath(postSliceActions.loadPosts());
+            dispatch(postSliceActions.loadPosts());
         }
         if(!comments.length){
-            dispath(commentSliceActions.loadComments());
+            dispatch(commentSliceActions.loadComments());
         }
     })
 
