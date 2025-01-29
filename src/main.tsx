@@ -1,19 +1,17 @@
-import {createRoot} from 'react-dom/client'
-import './index.css'
-import {routes} from "./router/routes.tsx";
-import {RouterProvider} from "react-router-dom";
-import {Provider} from "react-redux";
-import {store} from "./redux/store.ts";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "./store/store";
+import App from "./App";
+import "./index.css"; // Подключаем Tailwind CSS
 
-
-
-
-
-
-
-createRoot(document.getElementById('root')!).render(
-    <Provider store={store}>
-        <RouterProvider router={routes}/>
-    </Provider>
-)
-
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    </React.StrictMode>
+);
