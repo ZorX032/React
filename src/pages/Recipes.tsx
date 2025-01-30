@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecipes } from "../store/recipesSlice";
-import { RootState } from "../store/store";
+import {AppDispatch, RootState} from "../store/store";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import { Link } from "react-router-dom";
 
-const Recipes = () => {
-    const dispatch = useDispatch();
+ const Recipes = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const { recipes, loading } = useSelector((state: RootState) => state.recipes);
     const [page, setPage] = useState(1);
 

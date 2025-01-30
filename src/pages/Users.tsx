@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../store/usersSlice";
-import { RootState } from "../store/store";
+import {AppDispatch, RootState} from "../store/store";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import UserCard from "../components/UserCard";
 
 const Users = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const { users, loading } = useSelector((state: RootState) => state.users);
     const [page, setPage] = useState(1);
 
     useEffect(() => {
         dispatch(fetchUsers(page));
     }, [dispatch, page]);
+
+
 
     return (
         <div>

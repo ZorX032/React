@@ -7,11 +7,13 @@ import UserDetails from "./pages/UserDetails";
 import Recipes from "./pages/Recipes";
 import RecipeDetails from "./pages/RecipeDetails";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar.tsx";
+
 
 const App = () => {
     return (
         <div className="bg-gray-100 min-h-screen">
-            <Header />
+            <Navbar />
             <div className="container mx-auto p-4">
                 <Routes>
                     <Route path="/" element={<Home />} />

@@ -2,15 +2,26 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../store/authSlice";
 import { login } from "../api/auth";
+import {useNavigate} from "react-router-dom";
+
+
+
 
 const Login = () => {
-    const [username, setUsername] = useState("kminchelle");
-    const [password, setPassword] = useState("0lelplR");
+    const [username, setUsername] = useState("emilys");
+    const [password, setPassword] = useState("emilyspass");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
-        const userData = await login(username, password);
-        dispatch(setAuth(userData));
+        try{
+            const userData = await login(username, password);
+            dispatch(setAuth(userData));
+            console.log("Login successful")
+            navigate(`/users/${userData.id}`);
+        } catch (error){
+            console.error("Login failed", error)
+        }
     };
 
     return (

@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IUser } from "../types/user";
-import {getUserById, getUsers} from "../api/users";
-import axios from "axios";
+import { getUsers, getUserById } from "../api/users";
 
 interface UsersState {
     users: IUser[];
@@ -17,28 +16,19 @@ const initialState: UsersState = {
     error: null,
 };
 
-// ✅ Исправленный AsyncThunk (правильный тип возвращаемых данных)
-export const fetchUsers = createAsyncThunk<IUser[], number>(
-    "users/fetchUsers",
-    async (page) => {
-        const limit = 10;
-        const skip = (page - 1) * limit;
-        const response = await getUsers(limit, skip); // Должен возвращать `User[]`
-        return response; // Возвращаем массив `User[]`
-    }
-);
-export const fetchUserById = createAsyncThunk<IUser, number, { rejectValue: string }>(
-    'users/fetchUserById',
-    async (id: number, { rejectWithValue }) => {
-        try {
-            const response = await axios.get(`https://dummyjson.com/users/${id}`);
-            return response.data; // Single user object
-        } catch (error) {
-            console.log(error);
-            return rejectWithValue('Failed to fetch user');
-        }
-    }
-);
+// Асинхронное получение всех пользователей
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async (page: number) => {
+    const limit = 10;
+    const skip = (page - 1) * limit;
+    return await getUsers(limit, skip);
+});
+
+
+// Асинхронное получение одного пользователя по ID
+export const fetchUserById = createAsyncThunk("users/fetchUserById",
+    async (id:number) => {
+    return await getUserById(id);
+});
 
 const usersSlice = createSlice({
     name: "users",
@@ -56,11 +46,23 @@ const usersSlice = createSlice({
             })
             .addCase(fetchUsers.fulfilled, (state, action) => {
                 state.loading = false;
-                state.users = action.payload; // ✅ Теперь `action.payload` имеет правильный тип `User[]`
+                state.users = action.payload;
             })
             .addCase(fetchUsers.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.error.message || "Ошибка загрузки пользователей";
+                state.error = action.error.message || "Error loading users";
+            })
+            .addCase(fetchUserById.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(fetchUserById.fulfilled, (state, action) => {
+                state.loading = false;
+                state.selectedUser = action.payload;
+            })
+            .addCase(fetchUserById.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message || "Error loading user";
             });
     },
 });

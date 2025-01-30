@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchRecipeById } from "../store/recipesSlice";
-import { RootState } from "../store/store";
+import {AppDispatch, RootState} from "../store/store";
 
 const RecipeDetails = () => {
     const { id } = useParams<{ id: string }>();
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const { selectedRecipe, loading } = useSelector((state: RootState) => state.recipes);
 
     useEffect(() => {

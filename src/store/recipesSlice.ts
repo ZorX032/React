@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IRecipe } from "../types/recipe";
-import { getRecipes } from "../api/recipes";
+import {getRecipeById, getRecipes} from "../api/recipes";
+
 
 interface RecipesState {
     recipes: IRecipe[];
@@ -26,6 +27,11 @@ export const fetchRecipes = createAsyncThunk<IRecipe[], number>(
         return response; // ✅ Возвращаем массив `Recipe[]`
     }
 );
+
+export const fetchRecipeById = createAsyncThunk("users/fetchUserById",
+    async (id:number) => {
+        return await getRecipeById(id);
+    });
 
 const recipesSlice = createSlice({
     name: "recipes",

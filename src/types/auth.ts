@@ -8,4 +8,5 @@ export interface AuthState {
 export interface AuthResponse {
     token: string;
     user: IUser;
+    id: number;
 }
