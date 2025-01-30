@@ -3,6 +3,9 @@ import { IUser } from "../types/user.ts";
 export interface AuthState {
     user: IUser | null;
     token: string | null;
+    username: string;
+    image: string;
+    isAuthenticated: boolean;
 }
 
 export interface AuthResponse {
@@ -10,3 +13,4 @@ export interface AuthResponse {
     user: IUser;
     id: number;
 }
+
